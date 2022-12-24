@@ -1,51 +1,31 @@
-/**
- * _toupper - Converts a character to uppercase.
- * @c: the character to uppercase.
- * Return: A new uppercase character.
- */
-char _toupper(char c)
-{
-	int tmp_i = (int)c;
-	char res = c;
+#include "main.h"
 
-	if (tmp_i > 96 && tmp_i < 123)
-		res = (char)(tmp_i - 32);
-	return (res);
+/**
+ * cap_string - capitalizes all words in a string
+ * @s: string
+ * Return: address of s
+ */
+char *cap_string(char *s)
+{
+int i = 0, j;
+char a[] = " \t\n,;.!?\"(){}";
+
+while (*(s + i))
+{
+if (*(s + i) >= 'a' && *(s + i) <= 'z')
+{
+if (i == 0)
+*(s + i) -= 'a' - 'A';
+else
+{
+for (j = 0; j <= 12; j++)
+{
+if (a[j] == *(s + i - 1))
+*(s + i) -= 'a' - 'A';
 }
-
-/**
- * _isseparator - Tell whether or no a character is a string separator.
- * @c: The caracter to check.
- * Return: 1 if c is a separator.
- *	   0 otherwise.
- */
-int _isseparator(char c)
-{
-	int res = 0;
-
-	if ((int)c == 32 || c == '\t' || c == '\n' || c == ',' ||
-			c == ';' || c == '.' || c == '!' || c == '?' ||
-			c == '"' || c == '(' || c == ')' || c == '{' || c == '}')
-		res = 1;
-	return (res);
 }
-
-/**
- * cap_string - Capitalizes all words of a string.
- * @str: The string to capitalize.
- * Return: A reference to the capitalized string.
- */
-char *cap_string(char *str)
-{
-	int i = 0;
-	char tmp;
-
-	do {
-		tmp = str[i];
-		if (_isseparator(tmp))
-			if (str[i + 1] != '\0')
-				str[i + 1] = _toupper(str[i + 1]);
-		i++;
-	} while (tmp != '\0');
-	return (str);
+}
+i++;
+}
+return (s);
 }
