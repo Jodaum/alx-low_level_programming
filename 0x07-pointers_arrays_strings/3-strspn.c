@@ -1,40 +1,32 @@
-/** if a byte is in a string.
- * @str: The string.
- * @c: The character to look for.
- * Return: 1 if `c` occurs in `str`.
- *	   0 otherwise.
- */
- int find(char *str, char c)
-{
-	int i = 0, res = -1;
-
-	do {
-		if (str[i] == c)
-			res = i;
-		i++;
-	} while (res == -1 && str[i] != '\0');
-	if (res == -1 && c == str[i])
-		res = i;
-	return (res);
-}
+#include "main.h"
 
 /**
- * _strspn - Gets the length of a prefix substring.
- * @s: The main string.
- * @accept: The prefix substring.
- * Return: The number of bytes in `s` which consist only of bytes in `accept`.
+ * _strspn - a function that gets the length of a prefix substring
+ *
+ * @s: the initial segment of
+ *
+ * @accept: which consist only of bytes from
+ *
+ * Return: the number of bytes
  */
+
 unsigned int _strspn(char *s, char *accept)
 {
-	unsigned int res = 0;
-	int i = 0;
+int z = 0, x, y;
 
-	do {
-		if (find(s, accept[i]) >= 0)
-			res++;
-		i++;
-	} while (accept[i] != '\0');
-	if (find(s, accept[i]) >= 0)
-		res++;
-	return (res);
+for (x = 0; s[x] != '\0'; x++)
+{
+if (s[x] != 32)
+{
+for (y = 0; accept[y] != '\0'; y++)
+{
+if (s[x] == accept[y])
+z++;
+}
+}
+else
+return (z);
+}
+return (z);
+
 }
