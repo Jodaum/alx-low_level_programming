@@ -35,5 +35,3 @@ void print_strings(const char *separator, const unsigned int n, ...)
 
 	va_end(strings);
 }
-Footer
-© 2023 GitHub, Inc.
